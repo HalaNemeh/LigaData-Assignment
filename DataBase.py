@@ -52,7 +52,7 @@ class Database():
                 inv_map = {v: k for k, v in dict_tmp.items()}
                 ndf[ndf.columns[i]].replace(inv_map, inplace=True)
             #create Fact table or replace it   
-            ndf.to_sql('Fact', con=self.engine, if_exists='replace')
+            ndf.to_sql('Fact', con=self.engine, if_exists='replace', index=False)
             logger.info("Fact Table is successfuly updated")
             logger.info("Data Tables in DB are successfuly updated according to source file...")
         except psycopg2.DatabaseError as err:
@@ -84,7 +84,7 @@ class Database():
         try:
             logger.info("Creating Commits Table in DB with last 10 commits...")
             Commits_list = [[]]
-            for i in range(1,10):
+            for i in range(10):
                 g=[datetime.strptime(repo.get_git_commit(commits[i].sha).last_modified, '%a, %d %b %Y %H:%M:%S %Z').strftime('%b/%d/%Y %H:%M:%S'),
                 repo.get_git_commit(commits[i].sha).author.name,
                 repo.get_git_commit(commits[i].sha).message]
