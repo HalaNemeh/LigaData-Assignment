@@ -7,7 +7,7 @@ port= "5432"
 engine='postgresql://postgres:Hala@localhost:5432/dbligadata'
 
 #for Github API
-token='be4582e286ce39d0ca81f30b1518aa044494c2ab'
+token='0a0163ced220eafa42c2f6511e9e64f1a1ce499d'
 repo = "CSSEGISandData/COVID-19"
 file_path = "/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv"
 branch = "master"
